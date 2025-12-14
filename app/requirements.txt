@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+pytest
+requests
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-instrumentation-fastapi
+opentelemetry-exporter-jaeger
+psycopg2-binary
+deprecated

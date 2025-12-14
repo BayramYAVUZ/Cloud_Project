@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flight-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight-api
+  template:
+    metadata:
+      labels:
+        app: flight-api
+    spec:
+      containers:
+        - name: flight-api
+          image: bayramyavuz/flight-api:latest 
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://user:password@postgres/flightdb"
+            - name: JAEGER_AGENT_HOST
+              value: "jaeger"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flight-api-service
+spec:
+  selector:
+    app: flight-api
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP 
