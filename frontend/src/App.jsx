@@ -28,7 +28,7 @@ export default function App() {
         </header>
 
         <div className="container">
-          <h1>Flight Search V</h1>
+          <h1>Flight Search Vesion 2</h1>
 
           <div className="filters">
             <input
